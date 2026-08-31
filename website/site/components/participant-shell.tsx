@@ -1,46 +1,24 @@
 import Link from 'next/link';
-import {
-  BookOpenText,
-  CalendarRange,
-  CircleHelp,
-  FlaskConical,
-  FolderDown,
-  LayoutDashboard,
-  MessageSquareText,
-  Route,
-} from 'lucide-react';
+import { BookOpen, CircleHelp, FlaskConical, FolderOpen, LayoutGrid, MessageSquare, Route } from 'lucide-react';
 import { LogoutButton } from './logout-button';
 
 const links = [
-  ['/workshop', 'Overview', LayoutDashboard],
-  ['/curriculum', 'Curriculum', CalendarRange],
+  ['/workshop', 'Overview', LayoutGrid],
+  ['/curriculum', 'Curriculum', BookOpen],
   ['/methodology', 'Methodology', Route],
   ['/cases', 'Cases', FlaskConical],
-  ['/materials', 'Materials', FolderDown],
+  ['/materials', 'Materials', FolderOpen],
   ['/qa', 'Q&A channel', CircleHelp],
-  ['/feedback', 'Feedback channel', MessageSquareText],
+  ['/feedback', 'Feedback channel', MessageSquare],
 ] as const;
 
 export function ParticipantShell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="hub-shell">
-      <header className="hub-header">
-        <Link href="/workshop" className="wordmark"><span className="wordmark-mark">HAT</span><span>Participant hub</span></Link>
-        <div className="hub-header-actions"><span className="hub-mobile-nav">Workshop menu ↓</span><LogoutButton /></div>
-      </header>
-      <div className="hub-mobile-links">
-        {links.map(([href, label]) => <Link href={href} key={href}>{label}</Link>)}
-      </div>
-      <div className="hub-layout">
-        <aside className="hub-sidebar">
-          <p>Workshop navigation</p>
-          <nav className="hub-nav">
-            {links.map(([href, label, Icon]) => <Link href={href} key={href}><Icon size={17} />{label}</Link>)}
-          </nav>
-          <div className="hub-note"><BookOpenText size={16} /><strong>Living draft</strong><br />Materials marked “soon” will be added before the workshop.</div>
-        </aside>
-        <main className="hub-main"><div className="hub-main-inner">{children}</div></main>
-      </div>
+  return <div className="hub-shell">
+    <header className="hub-header"><Link href="/workshop" className="site-mark inverse"><span>HAT</span><strong>Participant hub</strong></Link><LogoutButton /></header>
+    <nav className="hub-mobile-links" aria-label="Workshop pages">{links.map(([href,label]) => <Link href={href} key={href}>{label}</Link>)}</nav>
+    <div className="hub-layout">
+      <aside className="hub-sidebar"><p>Workshop sections</p><nav>{links.map(([href,label,Icon], index) => <Link href={href} key={href}><span>{String(index + 1).padStart(2,'0')}</span><Icon size={16} />{label}</Link>)}</nav><div className="hub-note"><strong>Living material</strong><span>Unreleased items are marked “To be published soon”.</span></div></aside>
+      <main className="hub-main"><div className="hub-main-inner">{children}</div></main>
     </div>
-  );
+  </div>;
 }

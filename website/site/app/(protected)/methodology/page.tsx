@@ -2,27 +2,16 @@ import Image from 'next/image';
 
 export const metadata = { title: 'Methodology' };
 
-const steps = [
-  ['01', 'Prepare', 'Clean, encode and audit'],
-  ['02', 'Split', '70 / 15 / 15 without leakage'],
-  ['03', 'Train', 'Compare candidate models'],
-  ['04', 'Explain', 'Global, local and spatial SHAP'],
-  ['05', 'Deploy', 'ONNX + Grasshopper'],
-];
+const steps = [['01','Frame'],['02','Extract'],['03','Train'],['04','Explain'],['05','Package'],['06','Apply'],['07','Extend']];
 
 export default function MethodologyPage() {
-  return (
-    <>
-      <p className="hub-eyebrow">Reproducible workflow</p><h1 className="hub-title">Methodology</h1>
-      <p className="hub-lede">The workshop treats model development, explanation and deployment as one connected system. Accuracy matters, but so do evaluation discipline, interpretability and a clear input–output contract.</p>
-      <div className="method-steps">{steps.map(([number, title, text]) => <div className="method-step" key={number}><span>{number}</span><strong>{title}</strong><small>{text}</small></div>)}</div>
-
-      <section className="content-section"><h2>1. Prepare and audit</h2><p>Inspect missing values, distributions and outliers. Derive only defensible features, preserve repeated observations from the same object, and use VIF as a diagnostic rather than an automatic deletion rule.</p></section>
-      <section className="content-section"><h2>2. Train, validate and lock the test</h2><p>Training fits parameters. Validation supports model and hyperparameter choices. The locked test is opened once for an unbiased final estimate. Where observations are spatially related, the split must represent the intended deployment distance and context.</p></section>
-      <section className="content-section"><h2>3. Explain environmental contributions</h2><p>Beeswarm plots summarize importance and direction across the evaluation set. Dependence plots reveal response shape and approximate interactions. Waterfalls explain one prediction. Spatial SHAP maps locate where particular contributions are positive or negative.</p>
-        <figure className="content-image"><Image src="/images/shap-method.png" alt="Workshop slide illustrating the SHAP interpretation stage" width={960} height={540} /><figcaption>Workshop methodology slide · the figure will be replaced with the final workshop graphic before release.</figcaption></figure>
-      </section>
-      <section className="content-section"><h2>4. Encapsulate and reconnect</h2><p>The selected model is exported with preprocessing metadata, input names, units, allowed ranges and output transformation. Grasshopper then becomes an interface for scenario diagnosis—not a black-box prediction button.</p></section>
-    </>
-  );
+  return <>
+    <p className="hub-eyebrow">03 / Reproducible workflow</p><h1 className="hub-title">Methodology</h1><p className="hub-lede">Model development, explanation and deployment are treated as one connected system. Accuracy matters together with evaluation discipline, interpretability and a clear input–output contract.</p>
+    <div className="method-steps">{steps.map(([number,title]) => <div className="method-step" key={number}><span>{number}</span><strong>{title}</strong></div>)}</div>
+    <section className="content-section" id="surrogate"><h2>1. Surrogate model</h2><p>Approximate expensive or observed environmental relationships, then state the domain in which the approximation can be trusted.</p><figure className="content-image"><Image src="/slides/methodology/methodology-10.png" alt="Surrogate model workflow slide" width={1600} height={900} /><figcaption>Surrogate-model framing.</figcaption></figure></section>
+    <section className="content-section" id="features"><h2>2. Features and data</h2><p>Inspect missingness, distributions, outliers and collinearity. Preserve grouped observations and derive only defensible predictors.</p><figure className="content-image"><Image src="/slides/methodology/methodology-13.png" alt="Feature extraction methodology slide" width={1600} height={900} /><figcaption>Feature extraction and data preparation.</figcaption></figure></section>
+    <section className="content-section" id="training"><h2>3. Train, validate and test</h2><p>Use validation for model and hyperparameter choices. Open the locked test only after selection and refit. Spatially related observations require a split matching the intended deployment context.</p><div className="image-pair"><figure className="content-image"><Image src="/slides/methodology/methodology-17.png" alt="Model training workflow" width={1600} height={900} /><figcaption>Training workflow.</figcaption></figure><figure className="content-image"><Image src="/slides/methodology/methodology-31.png" alt="Model evaluation and application" width={1600} height={900} /><figcaption>Validation, testing and application.</figcaption></figure></div></section>
+    <section className="content-section" id="shap"><h2>4. Explain environmental contributions</h2><p>Beeswarm plots summarize direction and importance. Dependence plots reveal response shape. Waterfalls explain one prediction. Spatial SHAP maps locate fitted contributions.</p><div className="image-pair"><figure className="content-image"><Image src="/slides/methodology/methodology-35.png" alt="SHAP explanation slide" width={1600} height={900} /><figcaption>SHAP explanations.</figcaption></figure><figure className="content-image"><Image src="/slides/methodology/methodology-36.png" alt="Spatial SHAP slide" width={1600} height={900} /><figcaption>Spatial SHAP interpretation.</figcaption></figure></div></section>
+    <section className="content-section" id="deployment"><h2>5. Encapsulate and reconnect</h2><p>Export the model with feature order, units, allowed ranges and transformations. Grasshopper becomes a scenario-diagnosis interface rather than an unexplained prediction button.</p><div className="image-pair"><figure className="content-image"><Image src="/slides/methodology/methodology-42.png" alt="Model deployment slide" width={1600} height={900} /><figcaption>Deployment and encapsulation.</figcaption></figure><figure className="content-image"><Image src="/slides/methodology/methodology-44.png" alt="Design optimization slide" width={1600} height={900} /><figcaption>Human-guided optimization.</figcaption></figure></div></section>
+  </>;
 }

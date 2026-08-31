@@ -1,145 +1,104 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import {
-  ArrowRight,
-  Blocks,
-  CalendarDays,
-  CircleCheck,
-  Code2,
-  Network,
-  Sparkles,
-} from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Check, ExternalLink } from 'lucide-react';
 import { AccessForm } from '@/components/access-form';
 
-const outcomes = [
-  'Prepare an environmental dataset without spatial or tree-level leakage.',
-  'Train, validate and test a transparent surrogate-model workflow.',
-  'Interpret environmental effects with four complementary SHAP views.',
-  'Export the model to ONNX and reconnect it to Grasshopper design decisions.',
+const nav = [
+  ['#introduction', 'Introduction'],
+  ['#curriculum', 'Curriculum'],
+  ['#schedule', 'Schedule'],
+  ['#methodology', 'Methodology'],
+  ['#cases', 'Cases'],
+  ['#materials', 'Materials'],
+  ['#access', 'Participant access'],
 ];
 
 const modules = [
-  ['01', 'Frame', 'Surrogate models and human–AI teaming'],
-  ['02', 'Extract', 'Environmental features and data quality'],
-  ['03', 'Train', 'Model comparison and spatial validation'],
-  ['04', 'Explain', 'Beeswarm, dependence, waterfall and spatial SHAP'],
-  ['05', 'Package', 'ONNX encapsulation for design software'],
-  ['06', 'Apply', 'Diagnosis and performance-guided design'],
-  ['07', 'Extend', 'Optional agentic and multi-objective optimization'],
+  ['01', 'Surrogate model introduction'],
+  ['02', 'Feature extraction and data preparation'],
+  ['03', 'Model training, validation and test'],
+  ['04', 'Environmental SHAP interpretation'],
+  ['05', 'ONNX model encapsulation'],
+  ['06', 'Design support and spatial diagnosis'],
+  ['07', 'Optional agentic optimization'],
+];
+
+const materials = [
+  ['Workshop introduction', 'Available', 'Overview, tutors, schedule and expected outcomes.'],
+  ['Model-training exercise', 'Available', 'Colab, Python, sample data, SHAP and ONNX outputs.'],
+  ['Methodology previews', 'Available', 'Selected images rendered from the supplied slide deck.'],
+  ['Environment setup tutorial', 'To be published soon', 'Rhino, Grasshopper, Colab and local Python.'],
+  ['Plugin encapsulation package', 'To be published soon', 'C# wrapper, component contract and example definition.'],
+  ['Online meeting link', 'To be published soon', 'The protected Zoom link will appear in the participant hub.'],
 ];
 
 export default function Home() {
   return (
-    <main>
-      <header className="public-nav">
-        <Link href="/" className="wordmark" aria-label="Workshop home">
-          <span className="wordmark-mark">HAT</span>
-          <span>eCAADe 2026</span>
-        </Link>
-        <nav aria-label="Public navigation">
-          <a href="#curriculum">Curriculum</a>
-          <a href="#schedule">Schedule</a>
-          <Link href="/access" className="nav-access">Participant access</Link>
+    <main className="landing-shell">
+      <aside className="landing-sidebar">
+        <Link className="site-mark" href="/"><span>HAT</span><strong>eCAADe 2026</strong></Link>
+        <p>Human–AI Teaming workshop</p>
+        <nav aria-label="Page sections">
+          {nav.map(([href, label], index) => <a href={href} key={href}><span>{String(index + 1).padStart(2, '0')}</span>{label}</a>)}
         </nav>
-      </header>
+        <Link className="sidebar-access" href="/access">Enter hub <ArrowRight size={15} /></Link>
+      </aside>
 
-      <section className="hero-section">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow"><Sparkles size={15} /> eCAADe 2026 · Hybrid workshop</p>
-            <h1>From prediction to explainable, design-coupled intelligence.</h1>
-            <p className="hero-lede">
-              A hands-on two-day workshop for architects, landscape designers and
-              researchers who want to turn environmental data into an interpretable
-              model—and then put that model back into the design loop.
-            </p>
-            <div className="hero-actions">
-              <Link href="/access" className="button button-primary">Enter participant hub <ArrowRight size={17} /></Link>
-              <a href="#curriculum" className="button button-secondary">Explore curriculum</a>
-            </div>
-            <dl className="hero-meta">
-              <div><dt>Dates</dt><dd>7–8 September 2026</dd></div>
-              <div><dt>Format</dt><dd>Two-day hybrid · Day 2 optional</dd></div>
-              <div><dt>Capacity</dt><dd>15–20 ideal · 30 maximum</dd></div>
-            </dl>
+      <div className="landing-content">
+        <header className="mobile-header"><Link className="site-mark" href="/"><span>HAT</span><strong>eCAADe 2026</strong></Link><Link href="/access">Access</Link></header>
+
+        <section className="landing-hero" id="introduction">
+          <div className="hero-text">
+            <p className="mono-label">7–8 September 2026 · Hybrid workshop</p>
+            <h1>Human–AI<br />Teaming</h1>
+            <p className="display-subtitle">From predictive environmental models to explainable, design-coupled intelligence.</p>
+            <div className="hero-links"><Link className="solid-link" href="/access">Participant access <ArrowRight size={16} /></Link><a className="line-link" href="#curriculum">View curriculum</a></div>
           </div>
-          <div className="hero-visual" aria-label="Workshop visual">
-            <div className="hero-orbit orbit-one" />
-            <div className="hero-orbit orbit-two" />
-            <div className="hero-signal"><Network size={42} /></div>
-            <div className="hero-tag tag-data">DATA</div>
-            <div className="hero-tag tag-model">MODEL</div>
-            <div className="hero-tag tag-design">DESIGN</div>
-            <Image src="/images/workshop-hero.png" alt="Title slide from the Human–AI Teaming workshop materials" width={960} height={540} priority />
-          </div>
-        </div>
-      </section>
+          <figure className="hero-slide"><Image src="/slides/introduction/overview-1.png" alt="Human–AI Teaming workshop title slide" width={1600} height={900} priority /><figcaption>Workshop overview deck · title</figcaption></figure>
+        </section>
 
-      <section className="marquee" aria-label="Workshop sequence">
-        <span>OBSERVE</span><i /> <span>MODEL</span><i /> <span>EXPLAIN</span><i />
-        <span>ENCAPSULATE</span><i /> <span>DESIGN</span>
-      </section>
+        <section className="content-block statement-block">
+          <p className="section-number">01 / Introduction</p>
+          <div><h2>Prediction is only the beginning.</h2><p>The workshop follows one complete design–AI loop: extract environmental evidence, train and test a surrogate model, explain how the model uses the environment, package it for design software and evaluate new spatial scenarios.</p><p>The urban-tree carbon-growth case anchors the exercise. Thermal comfort, construction carbon, street vitality and spatial safety show how the same reasoning can transfer across design problems.</p></div>
+        </section>
 
-      <section className="section-shell intro-section">
-        <div><p className="section-kicker">The proposition</p><h2>Machine learning becomes useful to design when its reasoning is inspectable.</h2></div>
-        <div className="intro-copy">
-          <p>Participants follow one complete, reproducible workflow: prepare urban environmental data, compare models, test generalization, interpret environmental contributions, export the trained model and reconnect it to a spatial design environment.</p>
-          <p>The urban-tree carbon case anchors the exercises. Related cases in thermal comfort, construction carbon, street vitality and spatial safety show how the methodology transfers across design questions.</p>
-        </div>
-      </section>
+        <section className="content-block" id="curriculum">
+          <p className="section-number">02 / Curriculum</p>
+          <div><h2>Seven connected modules</h2><div className="module-list">{modules.map(([number, title]) => <article key={number}><span>{number}</span><h3>{title}</h3><ArrowRight size={17} /></article>)}</div></div>
+        </section>
 
-      <section id="curriculum" className="section-shell curriculum-section">
-        <div className="section-title-row">
-          <div><p className="section-kicker">Curriculum</p><h2>Seven connected modules</h2></div>
-          <p>Each module produces an artifact used by the next.</p>
-        </div>
-        <div className="module-grid">
-          {modules.map(([number, action, title], index) => (
-            <article className="module-card" key={number}>
-              <div className="module-top"><span>{number}</span>{index < 6 && <ArrowRight size={16} />}</div>
-              <p>{action}</p><h3>{title}</h3>
-            </article>
-          ))}
-        </div>
-      </section>
+        <section className="content-block" id="schedule">
+          <p className="section-number">03 / Schedule</p>
+          <div><h2>Two days, one continuous workflow</h2><div className="schedule-grid"><article><span>Day 01 · 07.09</span><h3>Understand and reproduce</h3><p>Framing, methodology, urban-tree case, guided modelling and first design application.</p></article><article><span>Day 02 · 08.09 · Optional</span><h3>Adapt and exchange</h3><p>Discussion, self-directed experimentation, peer support, sharing and feedback.</p></article></div><figure className="slide-frame"><Image src="/slides/introduction/overview-8.png" alt="Workshop schedule slide" width={1600} height={900} /><figcaption>Workshop schedule · detailed room and Zoom information: To be published soon</figcaption></figure></div>
+        </section>
 
-      <section className="dark-band">
-        <div className="section-shell outcome-grid">
-          <div>
-            <p className="section-kicker section-kicker-light">Expected outcome</p>
-            <h2>Leave with a workflow you can inspect, adapt and deploy.</h2>
-            <div className="tool-row">
-              <span><Code2 size={17} /> Python / Colab</span><span><Blocks size={17} /> Rhino / Grasshopper</span><span><Network size={17} /> ONNX</span>
-            </div>
-          </div>
-          <ul className="outcome-list">{outcomes.map((outcome) => <li key={outcome}><CircleCheck size={20} />{outcome}</li>)}</ul>
-        </div>
-      </section>
+        <section className="content-block" id="methodology">
+          <p className="section-number">04 / Methodology</p>
+          <div><h2>Evidence → model → explanation → design</h2><p className="section-lede">Participants work with clean splits, editable XGBoost settings, VIF diagnostics and four environmental SHAP views before exporting a tested ONNX model.</p><div className="image-pair"><figure className="slide-frame"><Image src="/slides/introduction/overview-4.png" alt="Workflow from sensor and simulation data to design" width={1600} height={900} /><figcaption>Overall workflow</figcaption></figure><figure className="slide-frame"><Image src="/slides/introduction/overview-9.png" alt="Seven methodology steps" width={1600} height={900} /><figcaption>Seven methodology steps</figcaption></figure></div><Link className="text-link" href="/access">Open the protected methodology pages <ArrowRight size={15} /></Link></div>
+        </section>
 
-      <section id="schedule" className="section-shell schedule-section">
-        <div className="section-title-row"><div><p className="section-kicker">Schedule</p><h2>Two days, one continuous workflow</h2></div><CalendarDays size={32} /></div>
-        <div className="day-grid">
-          <article className="day-card">
-            <p>DAY 01 · 07.09</p><h3>Understand and reproduce</h3>
-            <ul><li><time>09:30</time> Welcome, introductions and workshop framing</li><li><time>10:45</time> Methodology lecture</li><li><time>13:30</time> Urban-tree case study</li><li><time>15:15</time> Guided case workshop</li></ul>
-          </article>
-          <article className="day-card day-card-accent">
-            <p>DAY 02 · 08.09 · OPTIONAL</p><h3>Adapt, test and share</h3>
-            <ul><li><time>09:30</time> Discussion panel</li><li><time>10:30</time> Self-directed workshop and Q&amp;A</li><li><time>13:30</time> Iteration, peer exchange and support</li><li><time>16:15</time> Sharing, closing and feedback</li></ul>
-          </article>
-        </div>
-      </section>
+        <section className="content-block" id="cases">
+          <p className="section-number">05 / Cases</p>
+          <div><h2>One complete case, four transfer directions</h2><div className="case-strip"><span>Urban trees</span><span>Thermal comfort</span><span>Construction carbon</span><span>Street vitality</span><span>Spatial safety</span></div><div className="image-pair"><figure className="slide-frame"><Image src="/slides/introduction/overview-10.png" alt="Urban tree case workshop overview" width={1600} height={900} /><figcaption>Primary case workshop</figcaption></figure><figure className="slide-frame"><Image src="/slides/introduction/overview-12.png" alt="Previous teaching and research cases" width={1600} height={900} /><figcaption>Transfer examples</figcaption></figure></div></div>
+        </section>
 
-      <section className="section-shell access-callout">
-        <div><p className="section-kicker">Participant hub</p><h2>Slides, tutorials, scripts and discussion in one protected space.</h2><p>Some materials are still being prepared. Their place is reserved and clearly marked.</p></div>
-        <AccessForm compact />
-      </section>
+        <section className="content-block" id="materials">
+          <p className="section-number">06 / Materials</p>
+          <div><h2>A complete place for every resource</h2><div className="resource-list">{materials.map(([title, status, description]) => <article key={title}><div><h3>{title}</h3><p>{description}</p></div><span className={status === 'Available' ? 'resource-status available' : 'resource-status'}>{status}</span></article>)}</div><div className="repo-links"><a href="https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/tree/main/introduction" target="_blank" rel="noreferrer">Introduction folder <ExternalLink size={14} /></a><a href="https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/tree/main/materials" target="_blank" rel="noreferrer">Materials folder <ExternalLink size={14} /></a></div></div>
+        </section>
 
-      <footer className="public-footer">
-        <div><strong>Human–AI Teaming</strong><p>eCAADe 2026 workshop</p></div>
-        <div><strong>Tutors</strong><p>Pia Fricker · Chaowen Yao · Yichao Shi · Zubin Tan</p></div>
-        <p className="footer-note">Workshop draft · content and imagery will continue to evolve.</p>
-      </footer>
+        <section className="content-block outcomes-block">
+          <p className="section-number">07 / Outcomes</p>
+          <div><h2>What participants take away</h2><ul>{['A leakage-aware environmental dataset','A validated pooled surrogate model','Four environmental SHAP explanations','A portable ONNX model contract','A design-coupled diagnosis workflow'].map(item => <li key={item}><Check size={17} />{item}</li>)}</ul><figure className="slide-frame"><Image src="/slides/introduction/overview-14.png" alt="Workshop expected outcomes slide" width={1600} height={900} /><figcaption>Expected outcomes from the workshop deck</figcaption></figure></div>
+        </section>
+
+        <section className="content-block access-block" id="access">
+          <p className="section-number">08 / Participant access</p>
+          <div><h2>Enter the protected workshop hub</h2><p className="section-lede">Use the shared passcode supplied by the tutors. The hub contains exact navigation to curriculum, methodology, cases, materials, Q&A and private feedback.</p><AccessForm compact /></div>
+        </section>
+
+        <footer className="site-footer"><strong>Human–AI Teaming · eCAADe 2026</strong><span>Pia Fricker · Chaowen Yao · Yichao Shi · Zubin Tan</span><span>Living workshop draft</span></footer>
+      </div>
     </main>
   );
 }
