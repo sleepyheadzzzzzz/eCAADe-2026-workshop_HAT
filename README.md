@@ -14,9 +14,10 @@ Design-Coupled Intelligence**.
 
 ## Participant website
 
-The production Netlify address is published from `website/site/` and recorded
-here after deployment. All participant downloads are also bundled with the web
-application, so they do not depend on GitHub raw-file links.
+The production website is
+[ecaade-2026-workshop-hat.netlify.app](https://ecaade-2026-workshop-hat.netlify.app)
+and is published from `website/site/`. All participant downloads are bundled
+with the web application, so they do not depend on GitHub raw-file links.
 
 The website uses a black-and-white interface. The protected participant hub is
 organized as **Setup Guide**, **Slides**, **Codes & Samples**, and

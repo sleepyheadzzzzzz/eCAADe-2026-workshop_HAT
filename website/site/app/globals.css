@@ -104,6 +104,10 @@ img { max-width: 100%; }
 .access-card h1 { font-size: 46px; letter-spacing: -.05em; line-height: .95; margin: 0 0 20px; }
 .access-card > p:not(.section-kicker), .access-card small { color: var(--mid); }
 .access-card .access-form { margin: 28px 0 16px; }
+.internal-use-notice { background: var(--soft); border: 1px solid var(--black); margin: 24px 0; padding: 16px; }
+.internal-use-notice strong { display: block; font: 800 11px ui-monospace, monospace; margin-bottom: 7px; text-transform: uppercase; }
+.internal-use-notice p { color: var(--mid); font-size: 11px; line-height: 1.55; margin: 0; }
+.hub-internal-use { background: var(--white); margin: 0 0 42px; }
 
 /* Participant hub */
 .hub-shell { background: var(--soft); min-height: 100vh; }

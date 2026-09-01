@@ -2,3 +2,6 @@ outputs/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Local Netlify folder
+.netlify
