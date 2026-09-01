@@ -7,10 +7,11 @@ It is a Vinext/React site prepared for OpenAI Sites and Cloudflare Workers.
 
 - public workshop overview;
 - shared-passcode participant hub;
-- curriculum, methodology, case and materials pages;
+- participant sections for setup, PDF slides, codes and samples, and discussion;
+- direct links to the readiness notebook, model-training files and plugin template;
 - visible participant Q&A backed by D1;
 - separate private/anonymous feedback backed by D1;
-- clearly labelled placeholders for material that is not yet released.
+- clearly labelled placeholders for the final Zoom link and compiled plugin.
 
 ## Local development
 

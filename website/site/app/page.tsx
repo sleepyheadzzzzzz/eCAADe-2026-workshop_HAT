@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Check, ExternalLink } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { AccessForm } from '@/components/access-form';
 
 const nav = [
@@ -9,7 +9,6 @@ const nav = [
   ['#schedule', 'Schedule'],
   ['#methodology', 'Methodology'],
   ['#cases', 'Cases'],
-  ['#materials', 'Materials'],
   ['#access', 'Participant access'],
 ];
 
@@ -21,15 +20,6 @@ const modules = [
   ['05', 'ONNX model encapsulation'],
   ['06', 'Design support and spatial diagnosis'],
   ['07', 'Optional agentic optimization'],
-];
-
-const materials = [
-  ['Workshop introduction', 'Available', 'Overview, tutors, schedule and expected outcomes.'],
-  ['Model-training exercise', 'Available', 'Colab, Python, sample data, SHAP and ONNX outputs.'],
-  ['Methodology previews', 'Available', 'Selected images rendered from the supplied slide deck.'],
-  ['Environment setup tutorial', 'To be published soon', 'Rhino, Grasshopper, Colab and local Python.'],
-  ['Plugin encapsulation package', 'To be published soon', 'C# wrapper, component contract and example definition.'],
-  ['Online meeting link', 'To be published soon', 'The protected Zoom link will appear in the participant hub.'],
 ];
 
 export default function Home() {
@@ -82,19 +72,14 @@ export default function Home() {
           <div><h2>One complete case, four transfer directions</h2><div className="case-strip"><span>Urban trees</span><span>Thermal comfort</span><span>Construction carbon</span><span>Street vitality</span><span>Spatial safety</span></div><div className="image-pair"><figure className="slide-frame"><Image src="/slides/introduction/overview-10.png" alt="Urban tree case workshop overview" width={1600} height={900} /><figcaption>Primary case workshop</figcaption></figure><figure className="slide-frame"><Image src="/slides/introduction/overview-12.png" alt="Previous teaching and research cases" width={1600} height={900} /><figcaption>Transfer examples</figcaption></figure></div></div>
         </section>
 
-        <section className="content-block" id="materials">
-          <p className="section-number">06 / Materials</p>
-          <div><h2>A complete place for every resource</h2><div className="resource-list">{materials.map(([title, status, description]) => <article key={title}><div><h3>{title}</h3><p>{description}</p></div><span className={status === 'Available' ? 'resource-status available' : 'resource-status'}>{status}</span></article>)}</div><div className="repo-links"><a href="https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/tree/main/introduction" target="_blank" rel="noreferrer">Introduction folder <ExternalLink size={14} /></a><a href="https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/tree/main/materials" target="_blank" rel="noreferrer">Materials folder <ExternalLink size={14} /></a></div></div>
-        </section>
-
         <section className="content-block outcomes-block">
-          <p className="section-number">07 / Outcomes</p>
+          <p className="section-number">06 / Outcomes</p>
           <div><h2>What participants take away</h2><ul>{['A leakage-aware environmental dataset','A validated pooled surrogate model','Four environmental SHAP explanations','A portable ONNX model contract','A design-coupled diagnosis workflow'].map(item => <li key={item}><Check size={17} />{item}</li>)}</ul><figure className="slide-frame"><Image src="/slides/introduction/overview-14.png" alt="Workshop expected outcomes slide" width={1600} height={900} /><figcaption>Expected outcomes from the workshop deck</figcaption></figure></div>
         </section>
 
         <section className="content-block access-block" id="access">
-          <p className="section-number">08 / Participant access</p>
-          <div><h2>Enter the protected workshop hub</h2><p className="section-lede">Use the shared passcode supplied by the tutors. The hub contains exact navigation to curriculum, methodology, cases, materials, Q&A and private feedback.</p><AccessForm compact /></div>
+          <p className="section-number">07 / Participant access</p>
+          <div><h2>Enter the protected workshop hub</h2><p className="section-lede">Use the shared passcode supplied by the tutors. Setup guidance, PDF slides, code, sample data, plugin resources, Q&A and private feedback are organized inside the participant channel.</p><AccessForm compact /></div>
         </section>
 
         <footer className="site-footer"><strong>Human–AI Teaming · eCAADe 2026</strong><span>Pia Fricker · Chaowen Yao · Yichao Shi · Zubin Tan</span><span>Living workshop draft</span></footer>

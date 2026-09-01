@@ -16,9 +16,9 @@ Design-Coupled Intelligence**.
 
 [Open the current workshop website](https://human-ai-teaming-ecaade-2026.vinc3yao.chatgpt.site)
 
-The website uses a black-and-white interface and a persistent section panel.
-Unreleased resources retain their final position and are labelled **To be
-published soon**, so navigation can remain stable as the workshop is completed.
+The website uses a black-and-white interface. The protected participant hub is
+organized as **Setup Guide**, **Slides**, **Codes & Samples**, and
+**Discussion**, with interactive Q&A and private feedback channels.
 
 ## Model-training exercise
 
@@ -32,10 +32,10 @@ views.
 
 ## Repository status
 
-This is a living workshop repository. The training exercise and selected slide
-previews are available now. Environment-setting guidance, meeting links,
-Grasshopper encapsulation files and the example plugin are reserved in the site
-and will be published when ready.
+This is a living workshop repository. The setup guide, environment-check
+notebook, PDF slides, pooled model-training exercise and Grasshopper ONNX plugin
+template are available now. The final Zoom meeting URL and compiled example
+plugin retain clearly labelled placeholders until release.
 
 ## Contributing
 
