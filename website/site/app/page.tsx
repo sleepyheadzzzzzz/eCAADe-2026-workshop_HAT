@@ -31,11 +31,12 @@ export default function Home() {
         <nav aria-label="Page sections">
           {nav.map(([href, label], index) => <a href={href} key={href}><span>{String(index + 1).padStart(2, '0')}</span>{label}</a>)}
         </nav>
+        <Link className="sidebar-qa" href="/qa">Public Q&amp;A <ArrowRight size={15} /></Link>
         <Link className="sidebar-access" href="/access">Enter hub <ArrowRight size={15} /></Link>
       </aside>
 
       <div className="landing-content">
-        <header className="mobile-header"><Link className="site-mark" href="/"><span>HAT</span><strong>eCAADe 2026</strong></Link><Link href="/access">Access</Link></header>
+        <header className="mobile-header"><Link className="site-mark" href="/"><span>HAT</span><strong>eCAADe 2026</strong></Link><div><Link href="/qa">Q&amp;A</Link><Link href="/access">Access</Link></div></header>
 
         <section className="landing-hero" id="introduction">
           <div className="hero-text">
@@ -79,10 +80,10 @@ export default function Home() {
 
         <section className="content-block access-block" id="access">
           <p className="section-number">07 / Participant access</p>
-          <div><h2>Enter the protected workshop hub</h2><p className="section-lede">Use the shared passcode supplied by the tutors. Setup guidance, PDF slides, code, sample data, plugin resources, Q&A and private feedback are organized inside the participant channel.</p><AccessForm compact /></div>
+          <div><h2>Enter the protected workshop hub</h2><p className="section-lede">Use the shared passcode supplied by the tutors. Setup guidance, PDF slides, code, sample data, plugin resources and private feedback are organized inside the participant channel. The <Link className="placeholder-link" href="/qa">public Q&amp;A record</Link> is open for everyone to read and reply.</p><AccessForm compact /></div>
         </section>
 
-        <footer className="site-footer"><strong>Human–AI Teaming · eCAADe 2026</strong><span>Pia Fricker · Chaowen Yao · <a href="https://github.com/SHIyichao98" target="_blank" rel="noreferrer">Yichao Shi ↗</a> · Zubin Tan</span><span>Living workshop draft</span></footer>
+        <footer className="site-footer"><strong>Human–AI Teaming · eCAADe 2026</strong><span>Pia Fricker · Chaowen Yao · <a href="https://github.com/SHIyichao98" target="_blank" rel="noreferrer">Yichao Shi ↗</a> · Zubin Tan</span><span>Web developed by Yao Chaowen · <a href="mailto:chaowen.yao@aalto.fi">chaowen.yao@aalto.fi</a> · <a href="mailto:vinceyao@outlook.com">vinceyao@outlook.com</a></span></footer>
       </div>
     </main>
   );

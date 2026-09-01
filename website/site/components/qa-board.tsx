@@ -1,9 +1,31 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
-import { LoaderCircle, MessageCircleQuestion, Send } from 'lucide-react';
+import { LoaderCircle, MessageCircleQuestion, Reply, Send } from 'lucide-react';
 
-type Post = { id: string; display_name: string; category: string; title: string; body: string; status: string; created_at: string };
+type Answer = { id: string; display_name: string; body: string; created_at: string };
+type Post = { id: string; display_name: string; category: string; title: string; body: string; status: string; created_at: string; answers: Answer[] };
+
+function AnswerForm({ postId, onSaved }: { postId: string; onSaved: () => Promise<void> }) {
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState('');
+
+  async function submit(event: React.SubmitEvent<HTMLFormElement>) {
+    event.preventDefault(); setSubmitting(true); setMessage('');
+    const form = event.currentTarget;
+    const response = await fetch(`/api/qa/${postId}/answers`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.fromEntries(new FormData(form))) });
+    if (response.ok) { form.reset(); setMessage('Answer added to the public record.'); await onSaved(); }
+    else setMessage('The answer could not be posted. Please check both fields.');
+    setSubmitting(false);
+  }
+
+  return <form className="answer-form" onSubmit={submit}>
+    <div className="field"><label htmlFor={`answer-name-${postId}`}>Your display name</label><input id={`answer-name-${postId}`} name="displayName" maxLength={80} required /></div>
+    <div className="field"><label htmlFor={`answer-body-${postId}`}>Answer</label><textarea id={`answer-body-${postId}`} name="body" maxLength={2500} required /></div>
+    <button className="reply-button" type="submit" disabled={submitting}>{submitting ? <LoaderCircle className="spin" size={15} /> : <Reply size={15} />}Reply</button>
+    {message && <output className="answer-message">{message}</output>}
+  </form>;
+}
 
 export function QaBoard() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -25,7 +47,7 @@ export function QaBoard() {
     event.preventDefault(); setSubmitting(true); setMessage('');
     const form = new FormData(event.currentTarget);
     const response = await fetch('/api/qa', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(Object.fromEntries(form)) });
-    if (response.ok) { event.currentTarget.reset(); setMessage('Your question is now visible to the participant group.'); await load(); }
+    if (response.ok) { event.currentTarget.reset(); setMessage('Your question is now part of the public Q&A record.'); await load(); }
     else setMessage('The question could not be posted. Please check the form and try again.');
     setSubmitting(false);
   }
@@ -45,7 +67,15 @@ export function QaBoard() {
       <div className="qa-list">
         {loading && <p><LoaderCircle className="spin" size={18} /> Loading questions…</p>}
         {!loading && posts.length === 0 && <div className="empty-state"><MessageCircleQuestion size={28} /><h3>No questions yet</h3><p>Start the shared knowledge base by posting the first question.</p></div>}
-        {posts.map((post) => <article className="qa-post" key={post.id}><div className="qa-post-top"><span className="status-pill live">{post.category}</span><span className="qa-meta">{post.display_name} · {new Date(post.created_at).toLocaleDateString()}</span></div><h3>{post.title}</h3><p>{post.body}</p></article>)}
+        {posts.map((post) => <article className="qa-post" key={post.id}>
+          <div className="qa-post-top"><span className="status-pill live">{post.category}</span><span className="qa-meta">{post.display_name} · {new Date(post.created_at).toLocaleString()}</span></div>
+          <h3>{post.title}</h3><p>{post.body}</p>
+          <section className="answer-thread" aria-label={`Answers to ${post.title}`}>
+            <h4>{post.answers?.length ?? 0} {(post.answers?.length ?? 0) === 1 ? 'answer' : 'answers'}</h4>
+            {(post.answers ?? []).map((answer) => <article className="answer-record" key={answer.id}><div><strong>{answer.display_name}</strong><time dateTime={answer.created_at}>{new Date(answer.created_at).toLocaleString()}</time></div><p>{answer.body}</p></article>)}
+            <AnswerForm postId={post.id} onSaved={load} />
+          </section>
+        </article>)}
       </div>
     </>
   );

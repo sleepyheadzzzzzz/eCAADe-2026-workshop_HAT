@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { listQaPosts, saveQaPost } from '@/lib/netlify-storage';
-import { requestHasAccess } from '@/lib/request-access';
 
 export const runtime = 'nodejs';
 
@@ -8,13 +7,11 @@ function clean(value: unknown, maximum: number) {
   return typeof value === 'string' ? value.trim().slice(0, maximum) : '';
 }
 
-export async function GET(request: NextRequest) {
-  if (!(await requestHasAccess(request))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+export async function GET() {
   return NextResponse.json({ posts: await listQaPosts() });
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await requestHasAccess(request))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const body = (await request.json()) as Record<string, unknown>;
   const displayName = clean(body.displayName, 80);
   const category = clean(body.category, 40);
@@ -30,6 +27,7 @@ export async function POST(request: NextRequest) {
     body: question,
     status: 'open',
     created_at: new Date().toISOString(),
+    answers: [],
   });
   return NextResponse.json({ ok: true, id }, { status: 201 });
 }
