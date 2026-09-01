@@ -11,6 +11,7 @@ Complete these checks before the workshop:
 The environment check reports `READY`, `READY WITH WARNINGS`, or `NOT READY`.
 Keep the final report when asking the tutors for technical support.
 
-These resources originate from
+Original resource author: Yichao Shi
+([@SHIyichao98](https://github.com/SHIyichao98)). These files originate from
 [`SHIyichao98/DF_2026`](https://github.com/SHIyichao98/DF_2026) and are reused
 under its MIT License.

@@ -13,6 +13,7 @@ regression model as a compiled Grasshopper component for Rhino 8.
 The exact input order and preprocessing must match the exported ONNX model.
 Validate at least one Grasshopper prediction against Python before release.
 
-The template originates from
+Original template author: Yichao Shi
+([@SHIyichao98](https://github.com/SHIyichao98)). The template originates from
 [`SHIyichao98/DF_2026`](https://github.com/SHIyichao98/DF_2026) and is reused
 under its MIT License.
