@@ -14,7 +14,9 @@ Design-Coupled Intelligence**.
 
 ## Participant website
 
-[Open the current workshop website](https://human-ai-teaming-ecaade-2026.vinc3yao.chatgpt.site)
+The production Netlify address is published from `website/site/` and recorded
+here after deployment. All participant downloads are also bundled with the web
+application, so they do not depend on GitHub raw-file links.
 
 The website uses a black-and-white interface. The protected participant hub is
 organized as **Setup Guide**, **Slides**, **Codes & Samples**, and
@@ -43,6 +45,14 @@ Invited contributors are welcome to use a branch and pull request. Please read
 [`CONTRIBUTING.md`](CONTRIBUTING.md) before changing the scientific target,
 split logic, reference outputs or deployment contract.
 
+## Contributors and attribution
+
+Yichao Shi ([@SHIyichao98](https://github.com/SHIyichao98)) authored the setup
+guide, environment-check resources, and Grasshopper ONNX plugin encapsulation
+template reused by this workshop. See [`CONTRIBUTORS.md`](CONTRIBUTORS.md) and
+[`NOTICE.md`](NOTICE.md) for formal credit and provenance.
+
 ## License
 
-See [`LICENSE`](LICENSE).
+See [`LICENSE`](LICENSE). Reused DF_2026 resources retain their original MIT
+License in [`materials/licenses/DF_2026_MIT_LICENSE.txt`](materials/licenses/DF_2026_MIT_LICENSE.txt).

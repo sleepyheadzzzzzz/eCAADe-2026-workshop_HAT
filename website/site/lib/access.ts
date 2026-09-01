@@ -1,16 +1,8 @@
-import { env } from 'cloudflare:workers';
-
 export const ACCESS_COOKIE = 'hat_workshop_access';
 const SESSION_SECONDS = 60 * 60 * 24 * 7;
 
-type RuntimeSecrets = Cloudflare.Env & {
-  WORKSHOP_PASSCODE?: string;
-  SESSION_SECRET?: string;
-};
-
 function secret(name: 'WORKSHOP_PASSCODE' | 'SESSION_SECRET') {
-  const runtime = env as RuntimeSecrets;
-  const value = runtime[name] ?? process.env[name];
+  const value = process.env[name];
   if (!value) throw new Error(`${name} is not configured.`);
   return value;
 }
@@ -66,5 +58,5 @@ export const accessCookieOptions = {
   maxAge: SESSION_SECONDS,
   path: '/',
   sameSite: 'lax' as const,
-  secure: process.env.NODE_ENV === 'production',
+  secure: process.env.NETLIFY === 'true',
 };

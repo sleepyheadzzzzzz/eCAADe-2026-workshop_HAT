@@ -23,7 +23,9 @@ slide decks. Source PowerPoint files are not duplicated in this repository.
 ## Reused preparation resources
 
 The setup guide, environment check, local fallback files, and Grasshopper ONNX
-template are reused from
+template were authored by **Yichao Shi**
+([@SHIyichao98](https://github.com/SHIyichao98)) and reused from
 [`SHIyichao98/DF_2026`](https://github.com/SHIyichao98/DF_2026). They are
 included under the MIT License; see
-[`licenses/DF_2026_MIT_LICENSE.txt`](licenses/DF_2026_MIT_LICENSE.txt).
+[`licenses/DF_2026_MIT_LICENSE.txt`](licenses/DF_2026_MIT_LICENSE.txt) and the
+repository-level [`NOTICE.md`](../NOTICE.md).

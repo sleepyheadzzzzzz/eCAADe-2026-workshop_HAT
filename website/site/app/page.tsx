@@ -82,7 +82,7 @@ export default function Home() {
           <div><h2>Enter the protected workshop hub</h2><p className="section-lede">Use the shared passcode supplied by the tutors. Setup guidance, PDF slides, code, sample data, plugin resources, Q&A and private feedback are organized inside the participant channel.</p><AccessForm compact /></div>
         </section>
 
-        <footer className="site-footer"><strong>Human–AI Teaming · eCAADe 2026</strong><span>Pia Fricker · Chaowen Yao · Yichao Shi · Zubin Tan</span><span>Living workshop draft</span></footer>
+        <footer className="site-footer"><strong>Human–AI Teaming · eCAADe 2026</strong><span>Pia Fricker · Chaowen Yao · <a href="https://github.com/SHIyichao98" target="_blank" rel="noreferrer">Yichao Shi ↗</a> · Zubin Tan</span><span>Living workshop draft</span></footer>
       </div>
     </main>
   );

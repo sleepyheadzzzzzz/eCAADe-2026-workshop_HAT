@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { ensureDatabase } from '@/lib/database';
+import { listQaPosts, saveQaPost } from '@/lib/netlify-storage';
 import { requestHasAccess } from '@/lib/request-access';
+
+export const runtime = 'nodejs';
 
 function clean(value: unknown, maximum: number) {
   return typeof value === 'string' ? value.trim().slice(0, maximum) : '';
@@ -8,9 +10,7 @@ function clean(value: unknown, maximum: number) {
 
 export async function GET(request: NextRequest) {
   if (!(await requestHasAccess(request))) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  const db = await ensureDatabase();
-  const result = await db.prepare('SELECT id, display_name, category, title, body, status, created_at FROM qa_posts ORDER BY created_at DESC LIMIT 100').all();
-  return NextResponse.json({ posts: result.results });
+  return NextResponse.json({ posts: await listQaPosts() });
 }
 
 export async function POST(request: NextRequest) {
@@ -22,8 +22,14 @@ export async function POST(request: NextRequest) {
   const question = clean(body.body, 2500);
   if (!displayName || !category || !title || !question) return NextResponse.json({ error: 'Please complete every field.' }, { status: 400 });
   const id = crypto.randomUUID();
-  const now = new Date().toISOString();
-  const db = await ensureDatabase();
-  await db.prepare('INSERT INTO qa_posts (id, display_name, category, title, body, status, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)').bind(id, displayName, category, title, question, 'open', now, now).run();
+  await saveQaPost({
+    id,
+    display_name: displayName,
+    category,
+    title,
+    body: question,
+    status: 'open',
+    created_at: new Date().toISOString(),
+  });
   return NextResponse.json({ ok: true, id }, { status: 201 });
 }
