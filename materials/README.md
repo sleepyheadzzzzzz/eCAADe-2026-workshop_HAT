@@ -14,8 +14,8 @@ This folder keeps teaching materials separate from the workshop introduction.
 | Teaching-case previews | Available | [`slides/cases/`](slides/cases/) |
 | Rhino/Grasshopper ONNX template | Available | [`plugin-encapsulation/DF2026_Plugin_Template/`](plugin-encapsulation/DF2026_Plugin_Template/) |
 | Plugin-template ZIP | Available | [`plugin-encapsulation/DF2026_Plugin_Template.zip`](plugin-encapsulation/DF2026_Plugin_Template.zip) |
-| Compiled example workshop plugin | To be published soon | Reserved |
-| Zoom link and protected downloads | To be published soon | Participant website |
+| Compiled Betula plugin | Available | Rhino 8 Package Manager: search `Betula` |
+| Zoom links and protected downloads | Available | Participant website |
 
 The selected images and PDF files are generated from the supplied workshop
 slide decks. Source PowerPoint files are not duplicated in this repository.

@@ -36,9 +36,10 @@ views.
 ## Repository status
 
 This is a living workshop repository. The setup guide, environment-check
-notebook, PDF slides, pooled model-training exercise and Grasshopper ONNX plugin
-template are available now. The final Zoom meeting URL and compiled example
-plugin retain clearly labelled placeholders until release.
+notebook, updated PDF slides, pooled model-training exercise and Grasshopper
+ONNX plugin template are available now. Session-specific Zoom links are shown
+only inside the protected participant website. The compiled **Betula** plugin
+can be installed through Rhino 8 Package Manager by searching for `Betula`.
 
 ## Contributing
 
