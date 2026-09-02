@@ -16,12 +16,13 @@ export async function POST(request: NextRequest, context: { params: Promise<{ id
     return NextResponse.json({ error: 'Please enter your name and answer.' }, { status: 400 });
   }
 
-  const post = await addQaAnswer(id, {
+  const result = await addQaAnswer(id, {
     id: crypto.randomUUID(),
     display_name: displayName,
     body: answerBody,
     created_at: new Date().toISOString(),
   });
-  if (!post) return NextResponse.json({ error: 'Question not found.' }, { status: 404 });
-  return NextResponse.json({ ok: true, post }, { status: 201 });
+  if ('reason' in result && result.reason === 'not_found') return NextResponse.json({ error: 'Question not found.' }, { status: 404 });
+  if ('reason' in result) return NextResponse.json({ error: 'Another answer was saved at the same time. Please submit again.' }, { status: 409 });
+  return NextResponse.json({ ok: true, post: result.post }, { status: 201 });
 }

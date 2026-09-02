@@ -6,14 +6,16 @@ import { CheckCircle2, LoaderCircle, Send } from 'lucide-react';
 export function FeedbackForm() {
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [error, setError] = useState('');
 
   async function submit(event: React.SubmitEvent<HTMLFormElement>) {
-    event.preventDefault(); setSubmitting(true);
+    event.preventDefault(); setSubmitting(true); setSent(false); setError('');
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form));
     data.anonymous = (form.elements.namedItem('anonymous') as HTMLInputElement).checked ? 'true' : 'false';
     const response = await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ ...data, anonymous: data.anonymous === 'true' }) });
     if (response.ok) { form.reset(); setSent(true); }
+    else setError('Your feedback could not be saved. Please try again or email chaowen.yao@aalto.fi.');
     setSubmitting(false);
   }
 
@@ -33,7 +35,9 @@ export function FeedbackForm() {
         <label className="checkbox-field"><input defaultChecked id="anonymous" name="anonymous" type="checkbox" /> Store this submission as anonymous</label>
       </div>
       <button className="submit-button" type="submit" disabled={submitting}>{submitting ? <LoaderCircle className="spin" size={16} /> : <Send size={16} />}Send private feedback</button>
-      {sent && <p className="form-success"><CheckCircle2 size={17} /> Thank you. Your feedback has been recorded.</p>}
+      {sent && <p className="form-success"><CheckCircle2 size={17} /> Thank you. Your feedback has been saved privately for tutor review.</p>}
+      {error && <p className="form-error">{error}</p>}
+      <p className="form-storage-note">Submissions are stored in the workshop&apos;s private Netlify data store and are not shown in the public Q&amp;A. For direct contact, email <a href="mailto:chaowen.yao@aalto.fi">chaowen.yao@aalto.fi</a>.</p>
     </form>
   );
 }

@@ -2,13 +2,18 @@ import { NextRequest, NextResponse } from 'next/server';
 import { listQaPosts, saveQaPost } from '@/lib/netlify-storage';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 function clean(value: unknown, maximum: number) {
   return typeof value === 'string' ? value.trim().slice(0, maximum) : '';
 }
 
 export async function GET() {
-  return NextResponse.json({ posts: await listQaPosts() });
+  return NextResponse.json(
+    { posts: await listQaPosts() },
+    { headers: { 'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0' } },
+  );
 }
 
 export async function POST(request: NextRequest) {

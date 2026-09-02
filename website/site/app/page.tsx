@@ -25,11 +25,11 @@ const modules = [
 ];
 
 const team = [
-  ['Prof. Dr. Pia Fricker', 'Professor · Computational Design', 'Aalto University', 'https://fricker-arch-aalto.fi/'],
-  ['Chaowen Yao', 'PhD Candidate · Computational Landscape and Urbanism', 'Aalto University', 'https://yaochaowen.com/'],
-  ['Zubin Tan', 'University Teacher · Computational Design', 'Aalto University', ''],
-  ['Yichao Shi', 'PhD Candidate · Shape Grammars, Computational Design', 'Georgia Institute of Technology', ''],
-  ['Chenhao Zhu', 'PhD Candidate · Urban Mobility, Built Environment', 'Massachusetts Institute of Technology', ''],
+  ['Prof. Dr. Pia Fricker', 'Professor · Computational Design', 'Aalto University', 'https://fricker-arch-aalto.fi/', 'pia.fricker@aalto.fi'],
+  ['Chaowen Yao', 'PhD Candidate · Computational Landscape and Urbanism', 'Aalto University', 'https://yaochaowen.com/', 'chaowen.yao@aalto.fi'],
+  ['Zubin Tan', 'University Teacher · Computational Design', 'Aalto University', '', 'zubin.tan@aalto.fi'],
+  ['Yichao Shi', 'PhD Candidate · Shape Grammars, Computational Design', 'Georgia Institute of Technology', '', 'yshi431@gatech.edu'],
+  ['Chenhao Zhu', 'PhD Candidate · Urban Mobility, Built Environment', 'Massachusetts Institute of Technology', '', 'chzhu@mit.edu'],
 ];
 
 export default function Home() {
@@ -65,7 +65,7 @@ export default function Home() {
 
         <section className="content-block" id="team">
           <p className="section-number">02 / Team</p>
-          <div><h2>Workshop team</h2><div className="team-grid">{team.map(([name, role, institution, href]) => <article key={name}><span>{institution}</span><h3>{href ? <a href={href} target="_blank" rel="noreferrer">{name}</a> : name}</h3><p>{role}</p></article>)}</div><figure className="slide-frame"><Image src="/slides/introduction/overview-2.png" alt="Workshop team slide" width={1600} height={900} /><figcaption>Workshop team · updated overview deck</figcaption></figure></div>
+          <div><h2>Workshop team</h2><div className="team-grid">{team.map(([name, role, institution, href, email]) => <article key={name}><span>{institution}</span><h3>{href ? <a href={href} target="_blank" rel="noreferrer">{name}</a> : name}</h3><p>{role}</p><a className="team-email" href={`mailto:${email}`}>{email}</a></article>)}</div><figure className="slide-frame"><Image src="/slides/introduction/overview-2.png" alt="Workshop team slide" width={1600} height={900} /><figcaption>Workshop team · updated overview deck</figcaption></figure></div>
         </section>
 
         <section className="content-block" id="curriculum">

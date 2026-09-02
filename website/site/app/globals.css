@@ -60,13 +60,14 @@ img { max-width: 100%; }
 .module-list h3 { font-size: 18px; margin: 0; }
 .team-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); }
 .team-grid article { border: 1px solid var(--black); min-height: 150px; padding: 20px; }
-.team-grid article:nth-child(even) { border-left: 0; }
-.team-grid article:nth-child(n+3) { border-top: 0; }
-.team-grid article:last-child { grid-column: 1 / -1; }
+.team-grid article:first-child { grid-column: 1 / -1; }
+.team-grid article:nth-child(n+2) { border-top: 0; }
+.team-grid article:nth-child(2n+3) { border-left: 0; }
 .team-grid span { color: var(--mid); font: 10px ui-monospace, monospace; text-transform: uppercase; }
 .team-grid h3 { font-size: 20px; margin: 34px 0 5px; }
 .team-grid h3 a { text-decoration: underline; text-underline-offset: 4px; }
 .team-grid p { color: var(--mid); font-size: 13px; margin: 0; }
+.team-email { display: inline-block; font-size: 11px; margin-top: 14px; text-decoration: underline; text-underline-offset: 3px; }
 .schedule-grid { display: grid; gap: 0; grid-template-columns: 1fr 1fr; margin-bottom: 36px; }
 .schedule-grid article { border: 1px solid var(--black); padding: 30px; }
 .schedule-grid article + article { border-left: 0; }
@@ -254,6 +255,8 @@ a.resource-item:hover p { color: #cfcfcf; }
 .checkbox-field { align-items: center; display: flex; font-size: 12px; gap: 9px; grid-column: 1 / -1; }
 .submit-button { align-items: center; background: var(--black); border: 1px solid var(--black); color: var(--white); display: inline-flex; font-size: 12px; font-weight: 800; gap: 8px; margin-top: 22px; padding: 12px 16px; text-transform: uppercase; }
 .form-success { border: 1px solid var(--black); display: flex; font-size: 12px; gap: 8px; margin-top: 16px; padding: 11px; }
+.form-storage-note { border-top: 1px solid var(--line); color: var(--mid); font-size: 11px; margin: 20px 0 0; padding-top: 14px; }
+.form-storage-note a { color: var(--black); text-decoration: underline; text-underline-offset: 3px; }
 .qa-list { display: grid; gap: 12px; margin-top: 30px; }
 .qa-list > p { align-items: center; display: flex; gap: 8px; }
 .qa-post, .empty-state { background: var(--white); border: 1px solid var(--black); padding: 22px; }

@@ -34,7 +34,7 @@ export function QaBoard() {
   const [message, setMessage] = useState('');
 
   const load = useCallback(async () => {
-    const response = await fetch('/api/qa');
+    const response = await fetch(`/api/qa?refresh=${Date.now()}`, { cache: 'no-store' });
     if (response.ok) setPosts(((await response.json()) as { posts: Post[] }).posts);
     setLoading(false);
   }, []);
