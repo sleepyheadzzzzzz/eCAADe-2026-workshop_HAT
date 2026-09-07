@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Archive, Code2, Database, Download, ExternalLink, FileCode2, PackageCheck, Search } from 'lucide-react';
+import { Archive, Code2, Database, Download, ExternalLink, FileCode2, Map, PackageCheck, Search } from 'lucide-react';
 
 export const metadata = { title: 'Codes and samples' };
 
@@ -27,6 +27,14 @@ export default function CodesPage() {
         <div className="resource-item"><PackageCheck size={19} /><div><h3>Betula plugin for Rhino 8</h3><p>Open Rhino&apos;s Package Manager, search for <strong>Betula</strong>, select the current version and install it.</p></div><strong><Search size={13} /> Search Betula</strong></div>
       </div>
       <figure className="content-image plugin-visual"><Image src="/images/betula-package-manager.png" alt="Betula plugin listed in the Rhino Package Manager" width={1468} height={1024} /><figcaption>Rhino Package Manager · search “Betula” and choose Install.</figcaption></figure>
+    </section>
+
+    <section className="resource-group" id="plugin-demos">
+      <div className="resource-group-heading"><span>03</span><div><h2>Workshop plugin demos</h2><p>Download the prepared examples, then keep each package together when extracting it so its linked models, rasters and project files remain available.</p></div></div>
+      <div className="resource-list">
+        <a className="resource-item" href="https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/releases/download/workshop-materials-2026/Example.zip" target="_blank" rel="noreferrer"><Archive size={19} /><div><h3>Betula Rhino example</h3><p>Rhino and Grasshopper example files with the ONNX diagnosis model, environmental rasters, weather data and embedded assets.</p></div><strong>Download · 408 MB <Download size={13} /></strong></a>
+        <a className="resource-item" href="https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/releases/download/workshop-materials-2026/TreeSuit_XAI_City_Demo_2.1.2.zip" target="_blank" rel="noreferrer"><Map size={19} /><div><h3>TreeSuit XAI QGIS city demo · v2.1.2</h3><p>QGIS project, plugin package, example city layers, diagnosis rasters, planting outputs and participant guidance.</p></div><strong>Download · 6.8 MB <Download size={13} /></strong></a>
+      </div>
     </section>
 
     <section className="content-section"><div className="notice-banner"><strong>Important model contract</strong><p>The Grasshopper feature order and preprocessing must exactly match the exported ONNX model. Compare at least one Grasshopper result against the Python prediction before use.</p></div></section>

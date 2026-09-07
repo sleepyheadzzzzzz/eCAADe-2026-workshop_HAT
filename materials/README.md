@@ -15,6 +15,8 @@ This folder keeps teaching materials separate from the workshop introduction.
 | Rhino/Grasshopper ONNX template | Available | [`plugin-encapsulation/DF2026_Plugin_Template/`](plugin-encapsulation/DF2026_Plugin_Template/) |
 | Plugin-template ZIP | Available | [`plugin-encapsulation/DF2026_Plugin_Template.zip`](plugin-encapsulation/DF2026_Plugin_Template.zip) |
 | Compiled Betula plugin | Available | Rhino 8 Package Manager: search `Betula` |
+| Betula Rhino example package | Available | [Download `Example.zip`](https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/releases/download/workshop-materials-2026/Example.zip) |
+| TreeSuit XAI QGIS city demo v2.1.2 | Available | [Download demo ZIP](https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/releases/download/workshop-materials-2026/TreeSuit_XAI_City_Demo_2.1.2.zip) |
 | Zoom links and protected downloads | Available | Participant website |
 
 The selected images and PDF files are generated from the supplied workshop
