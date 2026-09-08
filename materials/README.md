@@ -13,10 +13,13 @@ This folder keeps teaching materials separate from the workshop introduction.
 | Participant exercise previews | Available | [`slides/participant-exercises/`](slides/participant-exercises/) |
 | Teaching-case previews | Available | [`slides/cases/`](slides/cases/) |
 | Rhino/Grasshopper ONNX template | Available | [`plugin-encapsulation/DF2026_Plugin_Template/`](plugin-encapsulation/DF2026_Plugin_Template/) |
-| Plugin-template ZIP | Available | [`plugin-encapsulation/DF2026_Plugin_Template.zip`](plugin-encapsulation/DF2026_Plugin_Template.zip) |
+| Betula Visual Studio package | Available | [Open protected plugin materials](https://ecaade-2026-workshop-hat.netlify.app/codes#plugin-encapsulation) |
 | Compiled Betula plugin | Available | Rhino 8 Package Manager: search `Betula` |
-| Betula Rhino example package | Available | [Download `Example.zip`](https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/releases/download/workshop-materials-2026/Example.zip) |
-| TreeSuit XAI QGIS city demo v2.1.2 | Available | [Download demo ZIP](https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/releases/download/workshop-materials-2026/TreeSuit_XAI_City_Demo_2.1.2.zip) |
+| Betula Rhino example package | Available | [Open protected workshop demos](https://ecaade-2026-workshop-hat.netlify.app/codes#plugin-demos) |
+| TreeSuit XAI QGIS city demo v2.1.2 | Available | [Open protected workshop demos](https://ecaade-2026-workshop-hat.netlify.app/codes#plugin-demos) |
+| Morning session recording | Available | [Open protected recordings](https://ecaade-2026-workshop-hat.netlify.app/slides#session-recordings) |
+| Afternoon session recording | Available | [Open protected recordings](https://ecaade-2026-workshop-hat.netlify.app/slides#session-recordings) |
+| Day 2 Miro board | Available | [Open protected collaboration board](https://ecaade-2026-workshop-hat.netlify.app/slides#day-2-collaboration) |
 | Zoom links and protected downloads | Available | Participant website |
 
 The selected images and PDF files are generated from the supplied workshop

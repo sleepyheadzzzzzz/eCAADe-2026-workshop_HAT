@@ -5,7 +5,7 @@ export const metadata = { title: 'Participant materials' };
 
 const sections = [
   ['Setup guide','Guide, environment-check notebook, local fallback and Zoom placeholder.','/setup'],
-  ['PDF slides','Overview, methodology, urban-tree case and participant exercise decks.','/slides'],
+  ['Slides, recordings & Miro','PDF teaching decks, session recordings and the Day 2 collaboration board.','/slides'],
   ['Codes & samples','Model training, data, verified outputs and plugin encapsulation.','/codes'],
   ['Discussion','Interactive Q&A and a separate private feedback form.','/discussion'],
 ];

@@ -4,9 +4,13 @@ import { Archive, Code2, Database, Download, ExternalLink, FileCode2, Map, Packa
 export const metadata = { title: 'Codes and samples' };
 
 export default function CodesPage() {
+  const visualStudioUrl = process.env.PARTICIPANT_VISUAL_STUDIO_URL ?? '#';
+  const rhinoExampleUrl = process.env.PARTICIPANT_RHINO_EXAMPLE_URL ?? '#';
+  const qgisDemoUrl = process.env.PARTICIPANT_QGIS_DEMO_URL ?? '#';
+
   return <>
     <p className="hub-eyebrow">04 / Reproducible resources</p><h1 className="hub-title">Codes &amp;<br />samples</h1>
-    <p className="hub-lede">Every workshop file below is served directly by this website. Model training and plugin encapsulation remain separated so participants can complete the Python workflow before moving into Rhino and Grasshopper.</p>
+    <p className="hub-lede">Workshop files are available through the verified links below. Model training and plugin encapsulation remain separated so participants can complete the Python workflow before moving into Rhino and Grasshopper.</p>
 
     <section className="resource-group" id="model-training">
       <div className="resource-group-heading"><span>01</span><div><h2>Model training</h2><p>One pooled XGBoost workflow with VIF, validation, four environment-only SHAP views and ONNX export.</p></div></div>
@@ -23,7 +27,7 @@ export default function CodesPage() {
     <section className="resource-group" id="plugin-encapsulation">
       <div className="resource-group-heading"><span>02</span><div><h2>Plugin encapsulation</h2><p>Rhino 8 / Grasshopper template for wrapping a numeric tabular ONNX regression model.</p></div></div>
       <div className="resource-list">
-        <a className="resource-item" href="/downloads/plugin/DF2026_Plugin_Template.zip" download><Code2 size={19} /><div><h3>Plugin source template</h3><p>Visual Studio solution, source, sample ONNX model, icon and instructions.</p></div><strong>Download ZIP <Download size={13} /></strong></a>
+        <a className="resource-item" href={visualStudioUrl} target="_blank" rel="noreferrer"><Code2 size={19} /><div><h3>Betula Visual Studio package</h3><p>Visual Studio solution, source, sample ONNX model, icon and instructions for building the Grasshopper component.</p></div><strong>Download via Dropbox <Download size={13} /></strong></a>
         <div className="resource-item"><PackageCheck size={19} /><div><h3>Betula plugin for Rhino 8</h3><p>Open Rhino&apos;s Package Manager, search for <strong>Betula</strong>, select the current version and install it.</p></div><strong><Search size={13} /> Search Betula</strong></div>
       </div>
       <figure className="content-image plugin-visual"><Image src="/images/betula-package-manager.png" alt="Betula plugin listed in the Rhino Package Manager" width={1468} height={1024} /><figcaption>Rhino Package Manager · search “Betula” and choose Install.</figcaption></figure>
@@ -32,8 +36,8 @@ export default function CodesPage() {
     <section className="resource-group" id="plugin-demos">
       <div className="resource-group-heading"><span>03</span><div><h2>Workshop plugin demos</h2><p>Download the prepared examples, then keep each package together when extracting it so its linked models, rasters and project files remain available.</p></div></div>
       <div className="resource-list">
-        <a className="resource-item" href="https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/releases/download/workshop-materials-2026/Example.zip" target="_blank" rel="noreferrer"><Archive size={19} /><div><h3>Betula Rhino example</h3><p>Rhino and Grasshopper example files with the ONNX diagnosis model, environmental rasters, weather data and embedded assets.</p></div><strong>Download · 408 MB <Download size={13} /></strong></a>
-        <a className="resource-item" href="https://github.com/sleepyheadzzzzzz/eCAADe-2026-workshop_HAT/releases/download/workshop-materials-2026/TreeSuit_XAI_City_Demo_2.1.2.zip" target="_blank" rel="noreferrer"><Map size={19} /><div><h3>TreeSuit XAI QGIS city demo · v2.1.2</h3><p>QGIS project, plugin package, example city layers, diagnosis rasters, planting outputs and participant guidance.</p></div><strong>Download · 6.8 MB <Download size={13} /></strong></a>
+        <a className="resource-item" href={rhinoExampleUrl} target="_blank" rel="noreferrer"><Archive size={19} /><div><h3>Betula Rhino example</h3><p>Rhino and Grasshopper example files with the ONNX diagnosis model, environmental rasters, weather data and embedded assets.</p></div><strong>Download via Dropbox · 408 MB <Download size={13} /></strong></a>
+        <a className="resource-item" href={qgisDemoUrl} target="_blank" rel="noreferrer"><Map size={19} /><div><h3>TreeSuit XAI QGIS city demo · v2.1.2</h3><p>QGIS project, plugin package, example city layers, diagnosis rasters, planting outputs and participant guidance.</p></div><strong>Download via Google Drive <Download size={13} /></strong></a>
       </div>
     </section>
 

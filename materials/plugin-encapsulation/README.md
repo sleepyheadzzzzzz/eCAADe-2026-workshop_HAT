@@ -4,7 +4,7 @@ The included template wraps a single-input, single-output tabular ONNX
 regression model as a compiled Grasshopper component for Rhino 8.
 
 - Browse [`DF2026_Plugin_Template/`](DF2026_Plugin_Template/).
-- Download [`DF2026_Plugin_Template.zip`](DF2026_Plugin_Template.zip).
+- Download the Betula Visual Studio package through the [protected participant materials](https://ecaade-2026-workshop-hat.netlify.app/codes#plugin-encapsulation).
 - Replace the model in `Model/model.onnx`.
 - Edit the component contract in `Plugin/PluginConfig.cs`.
 - Build the Visual Studio solution and distribute the complete release folder,
